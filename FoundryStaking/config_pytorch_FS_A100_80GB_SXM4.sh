@@ -1,7 +1,3 @@
 #!/bin/bash
 
-source config_v1/config_pytorch_80GB.sh
-
-declare -A BATCH_SIZE_FIX=(
-)
-source config_v1/fix.sh
+source config_v1/config_pytorch_A100_40GB_SXM4_v1.sh
