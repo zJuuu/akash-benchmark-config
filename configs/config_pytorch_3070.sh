@@ -37,7 +37,8 @@ PyTorch_resnet50_FP32_PARAMS=(
     --raport-file            "benchmark.json"
     --print-freq             "1"
     --training-only
-    --data-backend syntetic
+    --data-backend "synthetic"
+    --workers                "64"
 )
 
 PyTorch_resnet50_FP16_PARAMS=(
@@ -52,6 +53,7 @@ PyTorch_resnet50_FP16_PARAMS=(
     --batch-size             "120"
     --raport-file            "benchmark.json"
     --print-freq             "1"
+    --training-only
     --data-backend "synthetic"
     --workers                "64"
 )
@@ -127,7 +129,6 @@ PyTorch_ncf_FP32_PARAMS=(
     --data                    "/data/ncf/cache/ml-20m"
     --epochs                  "1"
     --batch_size              "240000"
-    --amp
 )
 
 PyTorch_ncf_FP16_PARAMS=(
