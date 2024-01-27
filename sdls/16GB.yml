@@ -1,7 +1,7 @@
 ---
 version: "2.0"
 services:
-  benchmark-rtx8000:
+  benchmark-16gb:
     image: zjuuu/gpu-benchmark:0.10
     expose:
       - port: 80
@@ -11,7 +11,7 @@ services:
     env:
       - FOLDER_NAME=
       - NAME_DATASET=all
-      - NAME_CONFIG=QuadroRTX8000_v1
+      - NAME_CONFIG=16GB
       - NAME_MODEL=all
       - TIMEOUT=3000
       - AWS_ACCESS_KEY_ID=
@@ -20,7 +20,7 @@ services:
       - S3_BUCKET=
 profiles:
   compute:
-    benchmark-rtx8000:
+    benchmark-16gb:
       resources:
         cpu:
           units: 12
@@ -33,15 +33,17 @@ profiles:
           attributes:
             vendor:
               nvidia:
-                - model: rtx8000
+                - model: t4
+                - model: p100
+                - model: a4000
   placement:
     dcloud:
       pricing:
-        benchmark-rtx8000:
+        benchmark-16gb:
           denom: uakt
           amount: 1000
 deployment:
-  benchmark-rtx8000:
+  benchmark-16gb:
     dcloud:
-      profile: benchmark-rtx8000
+      profile: benchmark-16gb
       count: 1

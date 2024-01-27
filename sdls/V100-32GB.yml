@@ -2,14 +2,15 @@
 version: "2.0"
 services:
   benchmark-v100:
-    image: zjuuu/gpu-benchmark:0.9
+    image: zjuuu/gpu-benchmark:0.10
     expose:
       - port: 80
         as: 80
         to:
           - global: true
     env:
-      - "CONFIG_URL=https://raw.githubusercontent.com/zJuuu/akash-benchmark-config/main/FoundryStaking/config_pytorch_FS_V100_32GB.sh"
+      - "CONFIG_URL=https://raw.githubusercontent.com/zJuuu/akash-benchmark-config/main/configs/config_pytorch_V100_32GB.sh"
+      - FOLDER_NAME=
       - NAME_DATASET=all
       - NAME_MODEL=all
       - TIMEOUT=3000
