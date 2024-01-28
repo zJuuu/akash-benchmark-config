@@ -2,13 +2,14 @@
 version: "2.0"
 services:
   benchmark-a100-80gb:
-    image: zjuuu/gpu-benchmark:0.10
+    image: zjuuu/gpu-benchmark:0.11
     expose:
       - port: 80
         as: 80
         to:
           - global: true
     env:
+      - START=true
       - FOLDER_NAME=
       - NAME_DATASET=all
       - NAME_CONFIG=A100_80GB_SXM4_v1

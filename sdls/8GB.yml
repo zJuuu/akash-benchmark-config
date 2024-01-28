@@ -1,7 +1,7 @@
 ---
 version: "2.0"
 services:
-  benchmark-rtx8000:
+  benchmark-v100:
     image: zjuuu/gpu-benchmark:0.11
     expose:
       - port: 80
@@ -10,9 +10,9 @@ services:
           - global: true
     env:
       - START=true
+      - "CONFIG_URL=https://raw.githubusercontent.com/zJuuu/akash-benchmark-config/main/configs/config_pytorch_3070.sh"
       - FOLDER_NAME=
       - NAME_DATASET=all
-      - NAME_CONFIG=QuadroRTX8000_v1
       - NAME_MODEL=all
       - TIMEOUT=3000
       - AWS_ACCESS_KEY_ID=
@@ -21,7 +21,7 @@ services:
       - S3_BUCKET=
 profiles:
   compute:
-    benchmark-rtx8000:
+    benchmark-v100:
       resources:
         cpu:
           units: 12
@@ -34,15 +34,16 @@ profiles:
           attributes:
             vendor:
               nvidia:
-                - model: rtx8000
+                - model: "p4"
+                - model: "3070"
   placement:
     dcloud:
       pricing:
-        benchmark-rtx8000:
+        benchmark-v100:
           denom: uakt
           amount: 1000
 deployment:
-  benchmark-rtx8000:
+  benchmark-v100:
     dcloud:
-      profile: benchmark-rtx8000
+      profile: benchmark-v100
       count: 1
